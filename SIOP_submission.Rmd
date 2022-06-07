@@ -38,7 +38,7 @@ wordcount         : "X"
 bibliography      : ["r-references.bib", "scale_reduction.bib"]
 
 floatsintext      : no
-linenumbers       : yes
+linenumbers       : no
 draft             : no
 mask              : no
 
@@ -46,6 +46,8 @@ figurelist        : no
 tablelist         : no
 footnotelist      : no
 
+csl               : "apa.csl"
+documentclass     : "apa7"
 classoption       : "man"
 output            : papaja::apa6_pdf
 ---
