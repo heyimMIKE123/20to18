@@ -1,26 +1,19 @@
 ---
-title             : "The title"
-shorttitle        : "Title"
+title             : "An Intentional Bi-Factor Engagement Measure: Final Scale Definitions"
+shorttitle        : "Bi-Factor Engagement"
 
 author: 
-  - name          : "First Author"
+  - name          : "Mike DeFabiis"
     affiliation   : "1"
     corresponding : yes    # Define only one corresponding author
     address       : "Postal address"
     email         : "my@email.com"
-    role:         # Contributorship roles (e.g., CRediT, https://casrai.org/credit/)
-      - "Conceptualization"
-      - "Writing - Original Draft Preparation"
-      - "Writing - Review & Editing"
-  - name          : "Ernst-August Doelle"
-    affiliation   : "1,2"
-    role:
-      - "Writing - Review & Editing"
-      - "Supervision"
+  - name          : "Morgan Russell"
+    affiliation   : "1"
 
 affiliation:
   - id            : "1"
-    institution   : "Wilhelm-Wundt-University"
+    institution   : "Montclair State University"
   - id            : "2"
     institution   : "Konstanz Business School"
 
@@ -38,7 +31,7 @@ wordcount         : "X"
 bibliography      : ["r-references.bib", "scale_reduction.bib"]
 
 floatsintext      : no
-linenumbers       : no
+linenumbers       : yes
 draft             : no
 mask              : no
 
@@ -53,18 +46,22 @@ output            : papaja::apa6_pdf
 ---
 
 ```{r setup, include = FALSE}
+
 library(papaja)
 library(tidyverse)
 r_refs("r-references.bib")
+
 ```
 
 ```{r analysis-preferences}
+
 # Seed for random number generation
 set.seed(42)
-knitr::opts_chunk$set(cache.extra = knitr::rand_seed)
+knitr::opts_chunk$set(cache.extra = knitr::rand_seed, echo=FALSE, warning=FALSE, message=FALSE)
+
 ```
 
-@bornovalova2020appropriate talk about issues with bifactor analysis
+@bornovalova2020appropriate talk about issues with bifactor analysis (article is in "Articles" folder on repository)
 
 ```{r  grabdata}
 
@@ -94,13 +91,12 @@ data <- read.csv("Engagement+(post-Qualtrics)_May+17,+2022_11.10.csv", header = 
   unite(., Item_20, i_speak_positively_about_this_organization_to_others, i_speak_positively_about_this_organization_to_others_2, sep = "", na.rm = T) %>% 
   mutate(across(c("i_really_throw_myself_into_my_job":"which_of_the_following_categories_best_describes_your_current_work_arrangement"), ~as.numeric(.)))
 
-
 ```
 
 This is the paper that gets us from 20 items down to the desired 18. We did NOT consult with @freud2012basic for any analyses!!!
 
 # Methods
-CFA modification indices and corrected item-total correlations
+We relied on CFA modification indices and corrected item-total correlations
 
 ## Participants
 Our sample size is `r nrow(data)`
